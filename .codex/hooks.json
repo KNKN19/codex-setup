@@ -1,0 +1,18 @@
+{
+  "description": "Export the Codex session transcript when the session ends.",
+  "hooks": {
+    "SessionEnd": [
+      {
+        "matcher": "^other$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$(git rev-parse --show-toplevel)/.codex/hooks/export_session_log.py\"",
+            "timeout": 3,
+            "statusMessage": "Exporting Codex session log"
+          }
+        ]
+      }
+    ]
+  }
+}
